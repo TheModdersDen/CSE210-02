@@ -32,11 +32,15 @@ class Card_Game():
             if guess in ["H".upper(), "HIGHER".upper()]:
                 self.new_card = self.draw_card()
                 if self.card1 > self.new_card:
-                    print("Correct!")
+                    print(self.common_data.get_encouragement())
+                else:
+                    print(self.common_data.get_wrong_choice())
             if guess in ["L".upper(), "LOWER".upper()]:    
                 self.new_card = self.draw_card()
                 if self.card1 < self.new_card:
-                    print("Correct!")
+                    print(self.common_data.get_encouragement())
+                else:
+                    print(self.common_data.get_wrong_choice())
     def draw_card(self):
         card = Card()
         return card.card_num
