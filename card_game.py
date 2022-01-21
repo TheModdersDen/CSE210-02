@@ -28,7 +28,7 @@ class Card_Game():
         self.new_card = None
         while True:
             print(f"The current card is: {self.card1}")
-            guess = input(int("Is the next card higher or lower than the previous card [h/l]? "))
+            guess = str(input("Is the next card higher or lower than the previous card [h/l]? "))
             if guess in ["H".upper(), "HIGHER".upper()]:
                 self.new_card = self.draw_card()
                 if self.card1 > self.new_card:
@@ -50,10 +50,7 @@ class Card_Game():
 
     def ask_question(self, question):
         query = input(str(question))
-        if query not in ["Y".upper(), "YES".upper(), "CONFIRM".upper()]:
-            return True
-        else:
-            return False
+        return query in ["Y".upper(), "YES".upper(), "CONFIRM".upper()]
 
 
 if __name__ == "__main__":
