@@ -46,7 +46,7 @@ class Card_Game():
         return card.card_num
 
     def update_score(self):
-        
+        pass
 
     def ask_question(self, question):
         query = input(str(question))
