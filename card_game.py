@@ -31,11 +31,11 @@ class Card_Game():
             guess = input(int("Is the next card higher or lower than the previous card [h/l]? "))
             if guess in ["H".upper(), "HIGHER".upper()]:
                 self.new_card = self.draw_card()
-                if self.card1 >= self.new_card:
+                if self.card1 > self.new_card:
                     print("Correct!")
             if guess in ["L".upper(), "LOWER".upper()]:    
                 self.new_card = self.draw_card()
-                if self.card1 >= self.new_card:
+                if self.card1 < self.new_card:
                     print("Correct!")
     def draw_card(self):
         card = Card()
