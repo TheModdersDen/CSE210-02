@@ -1,3 +1,4 @@
+from mimetypes import common_types
 from time import sleep
 from card import Card
 from game_common import Game_Common
@@ -24,37 +25,50 @@ class Card_Game():
             exit(0)
 
     def run_game(self):
-        self.common_data.current_turn += 1
-        if self.commmon_data.current_turn == 1:
-            self.prev_card = self.card1
-        else:
-            self.prev_card = self.
-        self.next_card = None
-        self.prev_card = None
-        question = self.ask_question("Would you like to play game (Y/N)? ")     
+        question = self.ask_question("Would you like to play game (Y/N)? ")      
+        self.new_card = None
         while question != False:
-            self.prev_card =
-            print(f"The current card is: {self.card1}")
-            guess = input(int("Is the next card higher or lower than the previous card [h/l]? "))
-            if guess in ["H".upper(), "HIGHER".upper()]:
-                self.new_card = self.draw_card()
-                if self.card1 > self.new_card:
-                    print(self.common_data.get_encouragement())
-            if guess in ["L".upper(), "LOWER".upper()]:    
-                self.new_card = self.draw_card()
-                if self.card1 < self.new_card:
-                    print(self.common_data.get_encouragement())
-            else:
-                print(self.common_data)
             self.common_data.current_turn += 1
-            question = self.ask_question("Would you like to play game (Y/N)? ") 
+            if self.common_data.current_turn == 1:
+                self.prev_card = self.card1
+            else:
+                self.prev_card = self.draw_card()
+                print(f"The current card is: {self.card1}")
+                guess = input(str("Is the next card higher or lower than the previous card [h/l]? "))
+                if guess in ["H".upper(), "HIGHER".upper()]:
+                    self.new_card = self.draw_card()
+                    if self.card1 > self.new_card:
+                        score = self.get_and_update_score(True)
+                        print(self.common_data.get_encouragement())
+                        print(f"The card number is : {self.new_card}.")
+                    print(f"Your score is : {score}.")
+                if guess in ["L".upper(), "LOWER".upper()]:    
+                    self.new_card = self.draw_card()
+                    if self.card1 < self.new_card:
+                        score = self.get_and_update_score(True)
+                        print(self.common_data.get_encouragement())
+                        print(f"The card number is : {self.new_card}.")
+                    print(f"Your score is : {score}.")
+                else:
+                    score = self.get_and_update_score(False)
+                    print(self.common_data.get_wrong_choice())
+                    print(f"The card number is : {str(self.new_card)}.")
+                    print(f"Your score is : {score}.")
+                self.common_data.current_turn += 1
+                question = self.ask_question("Would you like to play game (Y/N)? ") 
+            self.common_data.current_turn += 1
 
     def draw_card(self):
         card = Card()
         return card.card_num
 
-    def update_score(self):
-        pass
+    def get_and_update_score(self, correct):
+        if correct:
+            self.common_data.player_score += 100
+            return self.common_data.player_score
+        else:
+            self.common_data.player_score = self.common_data.player_score - 75
+            return self.common_data.player_score
 
     def ask_question(self, question):
         query = input(str(question))
