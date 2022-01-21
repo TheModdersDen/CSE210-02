@@ -28,6 +28,10 @@ class Card_Game():
         question = self.ask_question("Would you like to play game (Y/N)? ")      
         self.new_card = None
         while question != False:
+            if self.common_data.player_score == 0:
+                print(self.common_data.get_wrong_choice())
+                sleep(1)
+                exit(0)
             self.common_data.current_turn += 1
             if self.common_data.current_turn == 1:
                 self.prev_card = self.card1
