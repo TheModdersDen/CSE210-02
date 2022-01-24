@@ -10,7 +10,7 @@
 
 ## Authors/Credits:
 * Bryan Hunter
-  * hunterd.bryan@gmail.com
+  * hunterviper1996@gmail.com
 * Kent Lewis
   * koyoshi44@gmail.com
 * Guage Schneider
