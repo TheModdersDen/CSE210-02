@@ -16,6 +16,6 @@
 * Guage Schneider
   * guage.schneider@gmail.com
 * Josh Liddiard
-  * joshliddiard15@gmail.com
+  * pizzathief19@gmail.com
 * Aitana Toscano
   * aitanantc@gmail.com
