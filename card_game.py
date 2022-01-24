@@ -39,7 +39,11 @@ class Card_Game():
         
         if score > 0: #if the player has more than 0 points
             print(f"Your score is {score} after {self.common_data.current_turn} rounds.") #print the players score and the round counter
-            self.play_round() #start another round
+            self.play_again = str(input("Would you like to play again (Y/N)? ")).lower()
+            if self.play_again == "y" or self.play_again == "yes":
+                self.play_round() #start another round
+            else: 
+                self.end_game()
         else: #if the player has less than 0 points, the game is over
             self.end_game()
 
@@ -54,7 +58,7 @@ class Card_Game():
             return self.common_data.player_score
 
     def end_game(self):
-        self.play_again = str(input("Would you like to play again (Y/N)? ")).lower()
+        self.play_again = str(input("Would you like to play another game (Y/N)? ")).lower()
         if self.play_again == "y" or self.play_again == "yes":
             game = Card_Game()
             game.start_game()
