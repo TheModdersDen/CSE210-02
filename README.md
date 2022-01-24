@@ -8,5 +8,14 @@
 - "game_common.py" (All shared game data, variables, and information) 
 - "card_game.py" (The main game class/file which executes the logic from "game_common.py" and "card.py" to create the card game.)
 
-# Authors/Credits:
-* 
+## Authors/Credits:
+* Bryan Hunter
+  * hunterd.bryan@gmail.com
+* Kent Lewis
+  * koyoshi44@gmail.com
+* Guage Schneider
+  * guage.schneider@gmail.com
+* Josh Liddiard
+  * joshliddiard15@gmail.com
+* Aitana Toscano
+  * aitanantc@gmail.com
