@@ -36,10 +36,11 @@ class Card_Game():
             self.advice = self.common_data.get_encouragement()
         elif self.new_card.card_value == self.prev_card.card_value: #if the next card drawn is the same as the last one
             self.guess_state = "same card"
+            score = self.update_score()
             self.advice = self.common_data.get_tie_advice()
         else:
             self.guess_state = "wrong"
-            score = self.update_score(False) #update the players score
+            score = self.update_score() #update the players score
             self.advice = self.common_data.get_wrong_choice()
         
         print(f"You drew a {self.new_card.card_value}; {self.advice}") #tell the player which card was drawn and give them some advice
