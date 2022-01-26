@@ -13,4 +13,4 @@ class Game_Common():
 
     def get_wrong_choice(self):
         return random.choice(["Not as lucky...", "Keep trying!", "What a loss!", "Getting there... but not quite there.", "Not the best guess.", "WOW...", "Not a winner, that one.",\
-            "Target missed", "Negative on your last.", "Almost!", "No good!", "Unfortunate, really.", "Dissapointing... For you and the audience."])
+            "Target missed", "Negative on your last.", "Almost!", "No good!", "Unfortunate, really.", "Dissapointing... For you and the audience.", "You can do better than that!"])
