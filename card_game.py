@@ -31,6 +31,8 @@ class Card_Game():
         elif self.new_card.card_value < self.prev_card.card_value and guess == "l":  #if they correctly guessed it would be lower
             score = self.update_score(True) #update the players score
             self.advice = self.common_data.get_encouragement()
+        elif self.new_card.card_value == self.prev_card.card_value: #if the next card drawn is the same as the last one
+            self.advice = self.common_data.get_tie_advice()
         else:
             score = self.update_score(False) #update the players score
             self.advice = self.common_data.get_wrong_choice()
