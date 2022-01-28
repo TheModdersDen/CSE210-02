@@ -12,6 +12,7 @@ class Card_Game():
         self.prev_card = Card()
         self.play_again = ""
         self.advice = ""
+        self.guess_state = ""
 
     def start_game(self):
         print("You will begin the game with 300 point. \nEach round you will guess if the next card in the deck is higher or lower than the last\n"
@@ -26,13 +27,20 @@ class Card_Game():
         print(f"\nThe last card you drew was a {self.prev_card.card_value}") #tell the player which card was drawn last round
         guess = input(str("Will the next card be higher or lower [h/l]? ")).lower() #ask if they think the next card will be higher or lower
         if self.new_card.card_value > self.prev_card.card_value and guess == "h": #if they correctly guessed it would be higher
-            score = self.update_score(True) #update the players score
+            self.guess_state = "correct"
+            score = self.update_score() #update the players score
             self.advice = self.common_data.get_encouragement()
         elif self.new_card.card_value < self.prev_card.card_value and guess == "l":  #if they correctly guessed it would be lower
-            score = self.update_score(True) #update the players score
+            self.guess_state = "correct"
+            score = self.update_score() #update the players score
             self.advice = self.common_data.get_encouragement()
+        elif self.new_card.card_value == self.prev_card.card_value: #if the next card drawn is the same as the last one
+            self.guess_state = "same card"
+            score = self.update_score()
+            self.advice = self.common_data.get_tie_advice()
         else:
-            score = self.update_score(False) #update the players score
+            self.guess_state = "wrong"
+            score = self.update_score() #update the players score
             self.advice = self.common_data.get_wrong_choice()
         
         print(f"You drew a {self.new_card.card_value}; {self.advice}") #tell the player which card was drawn and give them some advice
@@ -54,12 +62,14 @@ class Card_Game():
         else: 
             self.end_game()        
 
-    def update_score(self, correct):
-        if correct:
+    def update_score(self):
+        if self.guess_state == "correct":
             self.common_data.player_score += 100
             return self.common_data.player_score
+        elif self.guess_state == "same card":
+            return self.common_data.player_score
         else:
-            self.common_data.player_score = self.common_data.player_score - 75
+            self.common_data.player_score -= 75
             return self.common_data.player_score
 
     def end_game(self):
@@ -69,7 +79,6 @@ class Card_Game():
             game.start_game()
         else:
             print ("Thanks for playing! Bye.")
-
 
     def draw_new_cards(self):
         if self.common_data.current_turn == 1: #for first round, draw two cards
