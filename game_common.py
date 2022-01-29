@@ -16,5 +16,5 @@ class Game_Common():
             "Target missed", "Negative on your last.", "Almost!", "No good!", "Unfortunate, really.", "Dissapointing... For you and the audience.", "You can do better than that!"])
     
     def get_tie_advice(self):
-        return random.choice(["Looks like this round is a tie", "No points this round", "That't the same as the last card", "At least you're consistent", "Alright, we'll call it a draw", "So close", "I regret to inform you that no one has won"])
-
+        return random.choice(["Looks like this round is a tie.", "No points this round.", "That's the same as the last card.", "At least you're consistent.", "Alright, we'll call it a draw!", "So close!", "I regret to inform you that no one has won.", "I'm sorry, Dave, I'm afraid that's a draw."])
+    
