@@ -74,7 +74,7 @@ class Card_Game():
 
     def end_game(self):
         self.play_again = str(input("Would you like to play another game (Y/N)? ")).lower()
-        if self.play_again == "y" or self.play_again =="yes":
+        if self.play_again == "y" or "yes":
             game = Card_Game()
             game.start_game()
         else:
